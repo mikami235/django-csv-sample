@@ -3,6 +3,8 @@ import io
 from django import forms
 from django.core.validators import FileExtensionValidator
 from .models import Post
+import codecs
+
 
 
 class CSVUploadForm(forms.Form):
@@ -18,7 +20,13 @@ class CSVUploadForm(forms.Form):
         # csv.readerに渡すため、TextIOWrapperでテキストモードなファイルに変換
         csv_file = io.TextIOWrapper(file, encoding='utf-8')
         reader = csv.reader(csv_file)
-
+        print("reader",reader)
+        
+        self.csv_file = reader
+        
+        for row in reader:
+            print(type(row))
+            print(row)
         # 各行から作った保存前のモデルインスタンスを保管するリスト
         self._instances = []
         try:
@@ -27,6 +35,10 @@ class CSVUploadForm(forms.Form):
                 self._instances.append(post)
         except UnicodeDecodeError:
             raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
+        print("file:",type(file))
+        #csvfile = csv.DictReader(codecs.iterdecode(file, 'utf-8'))
+        print("file",file)
+        #print("csvfile",csvfile)
 
         return file
 
