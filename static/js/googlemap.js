@@ -67,10 +67,10 @@ function initMap(data) {
   
 }
 
-function main() {
+function main(file_name) {
     // 1) ajaxでCSVファイルをロード
     var req = new XMLHttpRequest();
-    var filePath = 'acc_gyro.csv';
+    var filePath = file_name;//'static/js/acc_gyro.csv';
     req.open("GET", filePath, true);
     req.onload = function() {
       // 2) CSVデータ変換の呼び出し
@@ -81,4 +81,4 @@ function main() {
     req.send(null);
   }
 
-main();
+main("/static/js/temp1.csv");
