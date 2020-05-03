@@ -187,5 +187,6 @@ function csv2Array(str) {
   
   })
   */
-  main("/static/js/acc_gyro.csv");
+  //main("/static/js/acc_gyro.csv");
+  main("/static/js/temp1.csv");
   
