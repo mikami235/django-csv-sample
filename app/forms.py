@@ -26,7 +26,7 @@ class CSVUploadForm(forms.Form):
         
         for row in reader:
             print(type(row))
-            print(row)
+            print("reader row", row)
         # 各行から作った保存前のモデルインスタンスを保管するリスト
         self._instances = []
         try:
@@ -38,7 +38,23 @@ class CSVUploadForm(forms.Form):
         print("file:",type(file))
         #csvfile = csv.DictReader(codecs.iterdecode(file, 'utf-8'))
         print("file",file)
+        print("_instances",self._instances)
         #print("csvfile",csvfile)
+        print("reader reader")
+        with open("temp.csv", mode="w", encoding="utf-8") as f:
+            print("reader in open", reader)
+            #writer = csv.writer(f, lineterminator="\n")
+            #writer.writelines(row)
+            
+            f.writelines(row)
+            #f.writelines(reader)
+            #for row in reader:
+                #print("reader_1",row)
+                #print("test")
+                #writer = csv.writer(f, lineterminator="\n") # writerオブジェクトの作成 改行記号で行を区切る
+                #print("row",row[0])
+                #writer.writerows(row) # csvファイルに書き込み
+            print("end of reader")
 
         return file
 

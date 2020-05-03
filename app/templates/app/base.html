@@ -114,9 +114,14 @@
     </ul>
     <div class="container">
       {% block content %}{% endblock %}
+      <div id="map"></div>
+      <!--
+      <script  src="{% static 'js/googlemap.js' %}"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs88szrCB93PUJxz_T-HTSNd-Bdv9fLBk&callback=initMap"
+async defer></script>
+        -->
     </div>
-    <div id="chartdiv"></div>
-
+ 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
