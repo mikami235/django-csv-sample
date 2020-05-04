@@ -63,13 +63,7 @@ function csv2Array(str) {
       series.dataFields.valueX = "timestamp";
       series.dataFields.valueY ="ax";
       series.name = "ax";
-  
-  
-      // 軸ラベルの追加 済
-      // 軸の値を斜めに表示。
-      // 軸の値の表示感覚をあける。済
-      // 複数軸を追加。
-      // y軸方向も可変にする。済
+    
       series.strokeWidth = 2;
       series.minBulletDistance = 10;
       series.tooltipText = "{valueY}";
@@ -176,17 +170,6 @@ function csv2Array(str) {
     }
     req.send(null);
   }
-  
-  /*
-  form.myfile2.addEventListener( 'submit', function(e) {
-   
-    //読み込んだファイル情報を取得
-    var result = e.target.files;
-  
-    console.log( result );
-  
-  })
-  */
-  //main("/static/js/acc_gyro.csv");
+
   main("/static/media/temp.csv");
   

@@ -16,7 +16,7 @@
       }
       #map {
         width: 100%;
-        height: 500px;
+        height: 400px;
       }
       </style>
       
@@ -27,98 +27,25 @@
       
       <!-- Chart code -->
       <script src="{% static 'js/mychart.js' %}"></script>
-      <script>
-      am4core.ready(function() {
-      
-      // Themes begin
-      am4core.useTheme(am4themes_animated);
-      // Themes end
-      
-      // Create chart instance
-      var chart = am4core.create("chartdiv", am4charts.XYChart);
-      
-      // Add data
-      chart.data = generateChartData();
-      
-      // Create axes
-      var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-      dateAxis.renderer.minGridDistance = 50;
-      
-      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      
-      // Create series
-      var series = chart.series.push(new am4charts.LineSeries());
-      series.dataFields.valueY = "visits";
-      series.dataFields.dateX = "date";
-      series.strokeWidth = 2;
-      series.minBulletDistance = 10;
-      series.tooltipText = "{valueY}";
-      series.tooltip.pointerOrientation = "vertical";
-      series.tooltip.background.cornerRadius = 20;
-      series.tooltip.background.fillOpacity = 0.5;
-      series.tooltip.label.padding(12,12,12,12)
-      
-      // Add scrollbar
-      chart.scrollbarX = new am4charts.XYChartScrollbar();
-      chart.scrollbarX.series.push(series);
-      
-      // Add cursor
-      chart.cursor = new am4charts.XYCursor();
-      chart.cursor.xAxis = dateAxis;
-      chart.cursor.snapToSeries = series;
-      
-      function generateChartData() {
-          var chartData = [];
-          var firstDate = new Date();
-          firstDate.setDate(firstDate.getDate() - 1000);
-          var visits = 1200;
-          var toString = Object.prototype.toString;
-          for (var i = 0; i < 500; i++) {
-              // we create date objects here. In your data, you can have date strings
-              // and then set format of your dates using chart.dataDateFormat property,
-              // however when possible, use date objects, as this will speed up chart rendering.
-              var newDate = new Date(firstDate);
-              newDate.setDate(newDate.getDate() + i);
-              
-              visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-              //console.log(newDate)
-              //console.log(visits)
-  
-              // グラフ化しているパラメタはnewDateとvisits
-              chartData.push({
-                  date: newDate,
-                  visits: visits
-              });
-          }
-          console.log(typeof chartData)
-          console.log(toString.call(chartData))
-          console.log(chartData)
-
-          return chartData;
-      }
-      
-      }); // end am4core.ready()
-      </script>
-
-
     <title>ローバーセンサ　可視化</title>
   </head>
+
   <body>
     <ul class="nav justify-content-center">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'app:index' %}">Index</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'app:import' %}">Import</a>
+        <a class="nav-link" href="{% url 'app:import' %}">CSV読み込み</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'app:export' %}">Export</a>
+        <a class="nav-link" href="{% url 'app:export' %}">CSV出力</a>
       </li>
     </ul>
-    <div class="container">
-      {% block content %}{% endblock %}
+  <div class="container">
+    {% block content %}{% endblock %}
       
-    </div>
+  
     <div id="map"></div>
       
     <script  src="{% static 'js/googlemap.js' %}"></script>
@@ -130,5 +57,7 @@ async defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </div>
+
   </body>
 </html>

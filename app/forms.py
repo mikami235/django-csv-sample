@@ -4,8 +4,6 @@ from django import forms
 from django.core.validators import FileExtensionValidator
 from .models import Post
 import codecs
-import numpy as np
-import pandas as pd
 
 class CSVUploadForm(forms.Form):
     file = forms.FileField(
