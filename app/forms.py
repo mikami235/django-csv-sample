@@ -31,7 +31,7 @@ class CSVUploadForm(forms.Form):
             #print("reader row", row)
             #print("line_num", reader.line_num)
             if reader.line_num == 1:
-                with open("static/js/temp1.csv", mode="w", encoding="utf-8") as f:
+                with open("static/media/temp.csv", mode="w", encoding="utf-8") as f:
                     print("row in x before", row)
                     row = ",".join(row) 
                     row = row + "\n" 
@@ -40,7 +40,7 @@ class CSVUploadForm(forms.Form):
                 print("option=x")
 
             else:
-                with open("static/js/temp1.csv", mode="a", encoding="utf-8") as f:
+                with open("static/media/temp.csv", mode="a", encoding="utf-8") as f:
                     #print("row in a before", row)
                     #print(type(row))
                     row = ",".join(row) 
